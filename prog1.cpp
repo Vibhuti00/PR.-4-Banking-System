@@ -113,34 +113,34 @@ int main() // MAIN FUNCTION
     cout << "1. Saving Account" << endl;
     cout << "2. Checking Account" << endl;
     cout << "3. Fixed Deposit Account" << endl;
-    cout << "Enter Your Choice: ";
+    cout << "Enter Your Choice : ";
     cin >> choice;
     cout << endl
          << "-------------------------------" << endl;
-    cout << "Enter Account Number: ";
+    cout << "Enter Account Number : ";
     cin >> accountNumber;
-    cout << "Enter Account Holder Name: ";
+    cout << "Enter Account Holder Name : ";
     cin >> accountHolderName;
-    cout << "Enter Initial Balance: ";
+    cout << "Enter Initial Balance : ";
     cin >> balance;
     if (choice == 1)
     {
         float rate;
-        cout << "Enter Interest Rate: ";
+        cout << "Enter Interest Rate : ";
         cin >> rate;
         ba = new SavingAccount(accountNumber, accountHolderName, balance, rate);
     }
     else if (choice == 2)
     {
         double limit;
-        cout << "Enter Overdraft Limit: ";
+        cout << "Enter Overdraft Limit : ";
         cin >> limit;
         ba = new CheckingAccount(accountNumber, accountHolderName, balance, limit);
     }
     else if (choice == 3)
     {
         int term;
-        cout << "Enter Term (years): ";
+        cout << "Enter Term (years) : ";
         cin >> term;
         ba = new FixDepositAccount(accountNumber, accountHolderName, balance, term);
     }
@@ -159,31 +159,31 @@ int main() // MAIN FUNCTION
         cout << "3. Check Balance" << endl;
         cout << "4. Display Info" << endl;
         cout << "0. Exit" << endl;
-        cout << "Enter option: ";
+        cout << "Enter option : ";
         cin >> option;
         switch (option)
         {
         case 1:
-            cout << "Enter Amount: ";
+            cout << "Enter Amount : ";
             cin >> amount;
             ba->deposit(amount);
             break;
         case 2:
-            cout << "Enter Amount: ";
+            cout << "Enter Amount : ";
             cin >> amount;
             ba->withdraw(amount);
             break;
         case 3:
-            cout << "Balance: " << ba->getBalance() << endl;
+            cout << "Balance : " << ba->getBalance() << endl;
             break;
         case 4:
             ba->displayAccountInfo();
             break;
         case 0:
-            cout << "Thank You!";
+            cout << "Thank You";
             break;
         default:
-            cout << "Invalid Option";
+            cout << "Choose Wrong Option";
         }
     } while (option != 0);
     return 0;
