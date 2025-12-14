@@ -24,7 +24,7 @@ public:
             cout << "Not Enough Balance" << endl;
         }
     }
-    void getBalance(double balance) // GET METHOD BALANCE
+    double getBalance() // GET METHOD BALANCE
     {
         return balance;
     }
@@ -36,7 +36,7 @@ public:
         cout << "Account Balance" << balance << endl;
     }
 };
-class SavingAccount : BankAccount // DERIVED CLASS SAVING ACCOUNT
+class SavingAccount : private BankAccount // DERIVED CLASS SAVING ACCOUNT
 {
 private:
     float rate;
@@ -47,7 +47,7 @@ public:
         rate = 10;
     }
 };
-class CheckingAccount : BankAccount // DERIVED CLASS CHECKING ACCOUNT
+class CheckingAccount : private BankAccount // DERIVED CLASS CHECKING ACCOUNT
 {
 private:
     double overdraft;
@@ -58,7 +58,7 @@ public:
         overdraft = limit;
     }
 };
-class FixDepositAccount : BankAccount // DERIVED CLASS FIX DEPOSIT ACCOUNT
+class FixDepositAccount : private BankAccount // DERIVED CLASS FIX DEPOSIT ACCOUNT
 {
 private:
     int term;
@@ -97,17 +97,17 @@ int main()
     if (choice == 1)
     {
         cout << "Saving Account" << endl;
-        ba = new calculateInterest(rate);
+        ba = new SavingAccount();
     }
     else if (choice == 2)
     {
         cout << "Checking Account" << endl;
-        ba = new checkOverdraft(limit);
+        ba = new CheckingAccount();
     }
     else if (choice == 3)
     {
         cout << "Fix Deposit Amount in term" << n << endl;
-        ba = new calculateInterest(n);
+        ba = new FixDepositAccount();
     }
     else
     {
@@ -119,19 +119,19 @@ int main()
         {
         case 1:
             cout << "Deposit Amount.";
-            ba->deopsit(amount);
+            ba->deopsit();
             break;
         case 2:
             cout << "Withdraw Amount.";
-            ba->withdraw(amount);
+            ba->withdraw();
             break;
         case 3:
             cout << "Balance In Your Account.";
-            ba->getBalance(balance);
+            ba->getBalance();
             break;
         case 4:
             cout << "Display Account Information.";
-            ba->displayAccountInfo(rate);
+            ba->displayAccountInfo();
         case 0:
             cout << "Exit";
             break;
